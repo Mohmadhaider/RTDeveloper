@@ -1,7 +1,7 @@
 <?php
 	require_once "config.php";
 
-	$redirectURL = "https://rtdeveloper.000webhostapp.com/curl.php";
+	$redirectURL = "https://rtdeveloper.herokuapp.com/curl.php";
 	$permissions = ['email,user_photos'];
 	$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
 ?>
