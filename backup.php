@@ -8,7 +8,7 @@ require_once 'src1/contrib/Google_DriveService.php';
 $client = new Google_Client();
 $client->setClientId('534209108294-ndcesbksb7k8rv571dcsnfnhir2bhim3.apps.googleusercontent.com');
 $client->setClientSecret('hMpLy9PvCEqeHOsmYL5zJKOq');
-$client->setRedirectUri('https://rtdeveloper.000webhostapp.com/backup.php');
+$client->setRedirectUri('https://rtdeveloper.herokuapp.com/backup.php');
 $client->setScopes(array('https://www.googleapis.com/auth/drive.file'));
 $path="upload_img/Albums/";
 
