@@ -8,9 +8,123 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <title>User Profile</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<style>#myProgress {
+	<style>
+	
+	.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button4 {border-radius: 8px;}
+.button4:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    
+}
+
+
+.responsive {
+    padding: 0 6px;
+	text-align: center;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+body { 
+  margin: 0;
+  font-family: Georgia, serif;
+  
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+	#myProgress {
   width: 100%;
   background-color: #ddd;
 }
@@ -174,22 +288,34 @@ img.hover-shadow {
 </style>
 
 </head>
-<body style='background-color:royalblue'><center><div style='margin-right:25%; margin-left:25%; margin-top:10%;margin-bottom:15%; background-color:white;'><br><br><form>
-    <br>
-    <h2>RT Developer</h2>
-    <hr>
-	<ul>
+<body>
+
+<div class="header">
+  <a href="#default" class="logo">RTDeveloper</a>
+  <div class="header-right">
+    <a class="active" href="#home"><i class="material-icons">home</i> Home</a>
+    <a href="index.php"><i class="material-icons">power_settings_new</i> Logout</a>
+    <a href="#about"><i class="material-icons">people</i> About</a>
+  </div>
+</div>
+<center>
+<form>
+<hr>
+<center>
+<div >
+<h2>Welcome <?php echo $_SESSION["user_name"]; ?></h2><hr><br>
+<center>
+
 		<?php
 			$imgarr=explode(";",$_SESSION["thumb"]);
 			$arr=explode(";",$_SESSION["userData"]);
 			$i=0;
 			for($i=0;$i<count($arr)-1;$i++)
 			{
-				echo "<li>-<b>".$arr[$i]."</b><br><img src=".$imgarr[$i]." style='height:auto; width:20%;' onclick='slide($i);openModal();currentSlide(1)' class='hover-shadow cursor'/><br><br><input type='checkbox' value=$i name='checkbox$i'/>  <button name='download' value=$i>Download</button><button name='upload' value=$i>Upload</button></li><br><hr><br>";
+				echo "<div class='responsive'><div class='gallery'><img src=".$imgarr[$i]." style='height:300px; width:auto;' class='img-thumbnail' onclick='slide($i);openModal();currentSlide(1)' class='hover-shadow cursor'/><br><div class='desc'>".$arr[$i]."</div><br><input type='checkbox' value=$i name='checkbox$i'/>  <button name='download' class='button button4' value=$i><i class='material-icons'>get_app</i> Download</button><button name='upload' class='button button4' value=$i><i class='material-icons'>backup</i> Upload</button></div></div>";
 			}
 			
 			?>
-			</ul>
 			
 			<div id="myModal" class="modal" >
 			    <span class="close cursor" onclick="closeModal()" >&times;</span>
@@ -280,7 +406,7 @@ function showSlides(n) {
   captionText.innerHTML = dots[slideIndex-1].alt;
 }
 </script>
-			<?php echo "<button name='download_select' >Download Selected</button><button name='download_all' value=".($i-1).">Download All</button><br><button name='upload_select' >Upload Selected</button><button name='upload_all' value=".($i-1).">Upload All</button>";
+			<?php echo "</center><div class='clearfix'></div></div></center><hr><button class='button button4' name='download_select' ><i class='material-icons'>get_app</i> Download Selected</button><button name='download_all' class='button button4' value=".($i-1)."><i class='material-icons'>get_app</i> Download All</button><br><button class='button button4'  name='upload_select' ><i class='material-icons'>backup</i> Upload Selected</button><button name='upload_all' class='button button4' value=".($i-1)."><i class='material-icons'>backup</i> Upload All</button>";
 			
 			if(isset($_REQUEST["upload"]))
 			{
@@ -510,7 +636,6 @@ function progress()
 </script>
 <?php }
 		?>
-	</form><br><br></div>
-	</center>
+	</form></center>
 </body>
 </html>
