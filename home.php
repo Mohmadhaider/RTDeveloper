@@ -312,7 +312,7 @@ img.hover-shadow {
 			$i=0;
 			for($i=0;$i<count($arr)-2;$i++)
 			{
-				echo "<div class='responsive'><div class='gallery'><img src=".$imgarr[$i]." style='height:300px; width:auto;' class='img-thumbnail' onclick='slide($i);openModal();currentSlide(1)' class='hover-shadow cursor'/><br><div class='desc'><input type='checkbox' value=$i name='checkbox$i'/>".$arr[$i]."</div><br>  <button name='download' class='button button4' value=$i><i class='material-icons'>get_app</i> Download</button><button name='upload' class='button button4' value=$i><i class='material-icons'>backup</i> Upload</button></div></div>";
+				echo "<div class='responsive'><div class='gallery'><img src=".$imgarr[$i]." style='height:300px; width:auto;' class='img-thumbnail' onclick='slide($i);openModal();currentSlide(1)' class='hover-shadow cursor'/><br><div class='desc'><input type='checkbox' value=$i name='checkbox$i'/>".  $arr[$i]."</div><br>  <button name='download' class='button button4' value=$i><i class='material-icons'>get_app</i> Download</button><button name='upload' class='button button4' value=$i><i class='material-icons'>backup</i> Upload</button></div></div>";
 			}
 			
 			?>
