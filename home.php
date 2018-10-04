@@ -477,7 +477,7 @@ function showSlides(n) {
 			    $number=$_REQUEST["upload"]+1;
 				$_SESSION['alb_name']=$arr[$number-1];
 				$_SESSION["folder_name"]="facebook_".$_SESSION["user_name"]."_album;".$arr[$number-1];
-				echo "<script>alert('The link is generated bellow');</script>";
+				echo "<script>alert('The link is generated below');</script>";
 				echo "<br>Click <a href='backup.php' name='download_link'>here</a> to Upload<br>";
 				//create_zip_for_upload('upload_img/Albums');
 				
@@ -489,7 +489,7 @@ function showSlides(n) {
 			    $_SESSION["folder_name"]="facebook_".$_SESSION["user_name"]."_album;".$_SESSION["userData"];
 
 set_error_handler("customError");
-echo "<script>alert('The link is generated bellow');</script>";
+echo "<script>alert('The link is generated below');</script>";
 echo "<br>Click <a href='backup.php' name='download_link'>here</a> to Upload<br>";
 //create_zip_for_upload('upload_img/Albums');
 
@@ -509,7 +509,7 @@ echo "<br>Click <a href='backup.php' name='download_link'>here</a> to Upload<br>
 				
 				}
 				set_error_handler("customError");
-				echo "<script>alert('The link is generated bellow');</script>";
+				echo "<script>alert('The link is generated below');</script>";
 				echo "<br>Click <a href='backup.php' name='download_link'>here</a> to Upload<br>";
 				//create_zip_for_upload('upload_img/Albums/Selected');
 				
@@ -604,17 +604,11 @@ function create_zip($url)
 					}
 				}
 				$zip->close();
-				echo "<script>alert('The link is generated bellow');</script>";
+				echo "<script>alert('The link is generated below');</script>";
 				echo "<br>Click <a href='download.php?zip_file=".$_SESSION["zip_file"]."' name='download_link'>here</a> to download<br>";
 				}
 
 
-/* 
- * php delete function that deals with directories recursively
- */
- 
-				
-				
 
 
 function delete_files($target) {
@@ -674,30 +668,6 @@ function customError($errno, $errstr) {
 //set error handler
 set_error_handler("customError");
 
-		
-function progress()
-{?>
-    <div id="myProgress">
-  <div id="myBar">10%</div>
-</div>
-
-<br>
-
-<script>
-  var elem = document.getElementById("myBar");   
-  var width = 10;
-  var id = setInterval(frame, 100);
-  function frame() {
-    if (width >= 50) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-      elem.innerHTML = width * 1  + '%';
-    }
-  }
-</script>
-<?php }
 		?>
 	</form></center>
 </body>
